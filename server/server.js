@@ -24,7 +24,10 @@ const TRUST_PROXY = /^(1|true|yes|on)$/i.test(String(process.env.TRUST_PROXY || 
 const clientIp = req => (TRUST_PROXY && String(req.headers['x-forwarded-for'] || '').split(',')[0].trim()) || req.socket.remoteAddress || '';
 const DB_FILE = path.join(DATA, 'db.json');
 const PORT = +process.env.PORT || 3000;
-const SITE_URL = (process.env.SITE_URL || `http://localhost:${PORT}`).replace(/\/$/, '');
+// In GitHub Codespaces the public address is <codespace>-<port>.<forwarding domain>.
+const CODESPACE_URL = process.env.CODESPACE_NAME && process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN
+  ? `https://${process.env.CODESPACE_NAME}-${PORT}.${process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}` : '';
+const SITE_URL = (process.env.SITE_URL || CODESPACE_URL || `http://localhost:${PORT}`).replace(/\/$/, '');
 const SECURE = SITE_URL.startsWith('https://') ? '; Secure' : '';
 const ADMIN_EMAIL = String(process.env.ADMIN_EMAIL || '').trim().toLowerCase();
 const RESET_MINUTES = 60;
@@ -759,5 +762,6 @@ load();
 server.listen(PORT, () => {
   const nets = Object.values(require('os').networkInterfaces()).flat().filter(n => n && n.family === 'IPv4' && !n.internal);
   console.log(`  Gaudhara store running:\n    Store:  http://localhost:${PORT}\n    Admin:  http://localhost:${PORT}/login`);
+  if (!SITE_URL.includes('localhost')) console.log(`    Public: ${SITE_URL}  (admin: ${SITE_URL}/login)`);
   nets.forEach(n => console.log(`    On your Wi-Fi: http://${n.address}:${PORT}`));
 });

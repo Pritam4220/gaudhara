@@ -10,6 +10,8 @@ module.exports = {
     // Home-page banner
     banner: { tag: 'Morning Fresh', title: 'Farm to Home\nin 90 Mins', text: '100% Pure & Untouched', img: 'images/a2-milk.jpg' },
     phone: '+91 90000 00000',
+    whatsapp: '',                    // WhatsApp number for orders on the showcase page (empty = same as phone)
+    storeUrl: '',                    // full online store address once it is live, e.g. https://gaudhara.up.railway.app
     email: 'hello@yourdomain.com',
     address: 'Your farm address, City, State - 000000',
     freeDeliveryAbove: 199,

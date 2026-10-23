@@ -416,40 +416,6 @@
   "tag": ""
  },
  {
-  "id": "sweet-lassi",
-  "name": "Sweet Lassi",
-  "cat": "drinks",
-  "type": "Cow",
-  "art": "glass",
-  "accent": "#ff8a00",
-  "fill": "#fff1d0",
-  "bg": "#fff8ec",
-  "rating": 4.5,
-  "reviews": 980,
-  "variants": [
-   {
-    "size": "200 ml",
-    "price": 25,
-    "mrp": 30
-   },
-   {
-    "size": "500 ml",
-    "price": 55,
-    "mrp": 60
-   }
-  ],
-  "highlights": [
-   "Thick, creamy and lightly sweet",
-   "Made from fresh dahi",
-   "Served chilled"
-  ],
-  "desc": "Our classic Punjabi-style sweet lassi, churned from fresh dahi. A perfect summer cooler.",
-  "img": "images/sweet-lassi.jpg",
-  "inStock": true,
-  "subscribable": false,
-  "tag": ""
- },
- {
   "id": "chaas",
   "name": "Masala Chaas",
   "cat": "drinks",

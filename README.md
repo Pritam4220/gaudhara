@@ -63,6 +63,23 @@ npm start
 - The starting ratings and review counts are sample numbers. Change or remove them in `server/seed-products.json`
   before the database is first created, or ask a developer to clear them in `data/db.json`.
 
+## Test on GitHub
+
+**1. Showcase page (GitHub Pages, always online)** — products, prices, how to order. No login or orders.
+- Repo → **Settings → Pages** → Source: **Deploy from a branch** → Branch **main**, folder **/docs** → Save.
+- After about a minute: **https://pritam4220.github.io/gaudhara/**
+- After changing products or contact details: `npm run showcase`, then commit and push `docs/`.
+  Call/WhatsApp buttons appear once `STORE.phone` in `server/config.js` is your real number.
+
+**2. Full store for testing (GitHub Codespaces)** — login, cart, orders, admin, everything.
+- Repo → green **Code** button → **Codespaces** → **Create codespace on main**. The store starts by itself.
+- The terminal prints the admin login the first time (also in `data/admin-login.txt` inside the Codespace).
+  To choose it yourself: GitHub → Settings → Codespaces → Secrets → add `ADMIN_PASSWORD` for this repo.
+- **Ports** tab → port **3000** → right-click → **Port visibility → Public** → copy the address
+  (`https://…-3000.app.github.dev`). Open it on any phone; admin is that address + `/login`.
+- Free GitHub accounts get about 60 hours a month. The Codespace sleeps after ~30 minutes idle;
+  open it again from **Code → Codespaces** and the store restarts. Data there is separate from this computer.
+
 ## Going online (Railway)
 
 GitHub Pages cannot run this store (it needs a Node.js server). Railway runs it straight from this GitHub repo.

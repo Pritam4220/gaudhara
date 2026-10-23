@@ -5,7 +5,8 @@
   "description": "Gaudhara dairy e-commerce store with customer accounts and an admin dashboard",
   "scripts": {
     "start": "node server/server.js",
-    "reset-admin": "node server/reset-admin.js"
+    "reset-admin": "node server/reset-admin.js",
+    "showcase": "node server/build-showcase.js"
   },
   "engines": {
     "node": ">=18"

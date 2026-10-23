@@ -1,0 +1,15 @@
+{
+  // GitHub Codespaces: runs the full GauDhara store on GitHub and gives a test link.
+  // Code → Codespaces → Create codespace on main. The store starts by itself on port 3000.
+  "name": "GauDhara store",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "containerEnv": {
+    "TRUST_PROXY": "1",
+    "ADMIN_EMAIL": "anointinginfotech@gmail.com"
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "GauDhara store", "onAutoForward": "openBrowser" }
+  },
+  "postAttachCommand": "npm start"
+}
