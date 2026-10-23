@@ -63,11 +63,36 @@ npm start
 - The starting ratings and review counts are sample numbers. Change or remove them in `server/seed-products.json`
   before the database is first created, or ask a developer to clear them in `data/db.json`.
 
-## Going online
+## Going online (Railway)
 
-This runs on your computer. To make it public, it needs a server or VPS that stays on
-(for example a small VPS or Render/Railway with a persistent disk), plus HTTPS and a domain.
-Logins use passwords; for production, add OTP login (e.g. MSG91 or Firebase) and online payments (e.g. Razorpay).
+GitHub Pages cannot run this store (it needs a Node.js server). Railway runs it straight from this GitHub repo.
+
+1. **railway.app** → sign in with GitHub → **New Project** → **Deploy from GitHub repo** → `Pritam4220/gaudhara`.
+2. In the service → **Settings → Volumes** → **Add volume**, mount path **`/data`**.
+   (This keeps customers, orders and photos safe across restarts and updates.)
+3. **Variables** → add:
+   - `DATA_DIR=/data`
+   - `TRUST_PROXY=1`
+   - `ADMIN_EMAIL=anointinginfotech@gmail.com`
+   - `ADMIN_PASSWORD=` a strong password for the first admin login
+   - `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=465`, `SMTP_USER=anointinginfotech@gmail.com`,
+     `SMTP_PASS=` your Gmail App Password, `NOTIFY_EMAIL=anointinginfotech@gmail.com`
+4. **Settings → Networking → Generate Domain** (or add your own domain). Copy the address and add the variable
+   `SITE_URL=https://that-address` (used in emailed links; also turns on secure cookies).
+5. Railway builds and starts it with `npm start`. Health check path: `/api/health`.
+6. Open `https://that-address/login` and sign in with `ADMIN_EMAIL` / `ADMIN_PASSWORD`.
+
+Every `git push` to `main` redeploys automatically. The online store starts with its own empty database
+(products come from `server/seed-products.json`); product photos you uploaded on this computer must be
+uploaded again in Admin → Products.
+
+| Setting | What it does |
+|---|---|
+| `DATA_DIR` | Folder for `db.json` and uploaded photos (point it at the persistent volume) |
+| `UPLOADS_DIR` | Optional: a different folder just for photos |
+| `TRUST_PROXY=1` | Use the visitor's real IP behind the host's proxy (for login limits) |
+| `SITE_URL` | Public https address; links in emails and `Secure` cookies |
+| `PORT` | Set by the host automatically |
 
 ## Customer accounts: verified number, photos, forgot password
 

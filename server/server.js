@@ -16,11 +16,16 @@ const { PLANS, STATUSES, MAX_QTY, unitPrice, computeTotals } = require('../publi
 
 const ROOT = path.join(__dirname, '..');
 const PUBLIC = path.join(ROOT, 'public');
-const UPLOADS = path.join(PUBLIC, 'uploads');
-const DATA = path.join(ROOT, 'data');
+const DATA = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : path.join(ROOT, 'data');
+// On a host, photos go inside DATA_DIR so they survive restarts; locally they stay in public/uploads.
+const UPLOADS = process.env.UPLOADS_DIR ? path.resolve(process.env.UPLOADS_DIR) : process.env.DATA_DIR ? path.join(DATA, 'uploads') : path.join(PUBLIC, 'uploads');
+// Behind a hosting proxy (Railway, Render, nginx) the visitor's IP is in X-Forwarded-For.
+const TRUST_PROXY = /^(1|true|yes|on)$/i.test(String(process.env.TRUST_PROXY || '').trim());
+const clientIp = req => (TRUST_PROXY && String(req.headers['x-forwarded-for'] || '').split(',')[0].trim()) || req.socket.remoteAddress || '';
 const DB_FILE = path.join(DATA, 'db.json');
 const PORT = +process.env.PORT || 3000;
 const SITE_URL = (process.env.SITE_URL || `http://localhost:${PORT}`).replace(/\/$/, '');
+const SECURE = SITE_URL.startsWith('https://') ? '; Secure' : '';
 const ADMIN_EMAIL = String(process.env.ADMIN_EMAIL || '').trim().toLowerCase();
 const RESET_MINUTES = 60;
 const sha256 = v => crypto.createHash('sha256').update(String(v)).digest('hex');
@@ -75,7 +80,7 @@ function checkPassword(pw, stored) {
 
 const attempts = new Map(); // simple login rate limit: 10 tries per 15 minutes per IP
 function rateLimit(req, key, max = 10) {
-  const k = key + (req.socket.remoteAddress || '');
+  const k = key + clientIp(req);
   const now = Date.now();
   const a = attempts.get(k) || { n: 0, reset: now + 15 * 60e3 };
   if (now > a.reset) { a.n = 0; a.reset = now + 15 * 60e3; }
@@ -97,12 +102,12 @@ function startSession(role, id) {
   const token = crypto.randomBytes(32).toString('hex');
   db.sessions[token] = { role, uid: id, exp: Date.now() + MAX_AGE[role] * 1000 };
   save();
-  return `${COOKIE[role]}=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${MAX_AGE[role]}`;
+  return `${COOKIE[role]}=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${MAX_AGE[role]}${SECURE}`;
 }
 function endSession(req, role) {
   const t = parseCookies(req)[COOKIE[role]];
   if (t && db.sessions[t]) { delete db.sessions[t]; save(); }
-  return `${COOKIE[role]}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0`;
+  return `${COOKIE[role]}=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0${SECURE}`;
 }
 function sessionOf(req, role) {
   const s = db.sessions[parseCookies(req)[COOKIE[role]]];
@@ -127,7 +132,7 @@ const publicUser = u => u && { id: u.id, name: u.name, phone: u.phone, photo: u.
 const otpRequired = () => /^(on|1|true|yes)$/i.test(String(process.env.REQUIRE_OTP || '').trim());
 const testMode = req => /^(on|1|true|yes)$/i.test(String(process.env.VERIFY_TEST_MODE || '').trim()) && isLocal(req);
 const verifyStatus = req => ({ waSend: wa.waSendReady(), waReceive: wa.waReceiveReady(), sms: smsConfigured(), test: testMode(req) });
-const isLocal = req => /^(::1|127\.0\.0\.1|::ffff:127\.0\.0\.1)$/.test(req.socket.remoteAddress || '');
+const isLocal = req => !TRUST_PROXY && /^(::1|127\.0\.0\.1|::ffff:127\.0\.0\.1)$/.test(req.socket.remoteAddress || '');
 const liveProducts = () => db.products.filter(p => !p.deleted);
 
 function cleanCart(cart) {
@@ -197,6 +202,7 @@ const routes = [];
 const route = (method, pattern, handler, opts = {}) => routes.push({ method, re: new RegExp('^' + pattern.replace(/:(\w+)/g, '(?<$1>[^/]+)') + '$'), handler, ...opts });
 
 // Public
+route('GET', '/api/health', () => ({ ok: true }));
 route('GET', '/api/config', ({ req }) => ({
   STORE: config.STORE, SUB_DISCOUNT: config.SUB_DISCOUNT, COUPONS: config.COUPONS,
   CATEGORIES: config.CATEGORIES, PAYMENT_METHODS: config.PAYMENT_METHODS,
@@ -703,8 +709,12 @@ function serveStatic(req, res, pathname) {
   // The team dashboard opens only at /login; it is not linked from the store.
   if (pathname === '/admin.html') pathname = '/__none__';
   if (pathname === '/login' || pathname === '/login/') pathname = '/admin.html';
-  const file = path.normalize(path.join(PUBLIC, decodeURIComponent(pathname)));
-  if (!file.startsWith(PUBLIC + path.sep) || path.basename(file).startsWith('.') || file.endsWith('.md')) { res.writeHead(404); return res.end('Not found'); }
+  let decoded;
+  try { decoded = decodeURIComponent(pathname); } catch { res.writeHead(400); return res.end('Bad request'); }
+  const fromUploads = decoded.startsWith('/uploads/');
+  const base = fromUploads ? UPLOADS : PUBLIC;
+  const file = path.normalize(path.join(base, fromUploads ? decoded.slice('/uploads'.length) : decoded));
+  if (!file.startsWith(base + path.sep) || path.basename(file).startsWith('.') || file.endsWith('.md')) { res.writeHead(404); return res.end('Not found'); }
   fs.stat(file, (err, st) => {
     if (err || !st.isFile()) { res.writeHead(404, { 'Content-Type': 'text/plain' }); return res.end('Not found'); }
     const ext = path.extname(file).toLowerCase();
@@ -717,6 +727,9 @@ function serveStatic(req, res, pathname) {
     fs.createReadStream(file).pipe(res);
   });
 }
+
+// Last line of defence: log unexpected errors instead of letting one bad request stop the store.
+process.on('unhandledRejection', e => console.error('[unhandled]', e));
 
 const server = http.createServer(async (req, res) => {
   const { pathname, searchParams } = new URL(req.url, 'http://localhost');
