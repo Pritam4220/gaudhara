@@ -1,0 +1,13 @@
+{
+  "name": "gaudhara-store",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Gaudhara dairy e-commerce store with customer accounts and an admin dashboard",
+  "scripts": {
+    "start": "node server/server.js",
+    "reset-admin": "node server/reset-admin.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

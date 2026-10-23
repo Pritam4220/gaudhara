@@ -1,0 +1,487 @@
+[
+ {
+  "id": "cow-milk",
+  "name": "Fresh Cow Milk",
+  "cat": "milk",
+  "type": "Cow",
+  "tag": "Best Seller",
+  "art": "bottle",
+  "accent": "#2874f0",
+  "label": "COW",
+  "bg": "#e8f1ff",
+  "rating": 4.5,
+  "reviews": 2341,
+  "subscribable": true,
+  "variants": [
+   {
+    "size": "500 ml",
+    "price": 32,
+    "mrp": 35
+   },
+   {
+    "size": "1 L",
+    "price": 60,
+    "mrp": 68
+   }
+  ],
+  "highlights": [
+   "Milked and chilled the same morning",
+   "No preservatives, no added water",
+   "Delivered in a hygienic sealed bottle",
+   "Fat 3.5% minimum"
+  ],
+  "desc": "Pure, wholesome cow milk from our own farm. Our cows are grass-fed and milked hygienically, and the milk is chilled within minutes so it reaches you fresh, creamy and full of natural goodness. Perfect for tea, coffee and growing kids.",
+  "img": "images/cow-milk.jpg",
+  "inStock": true
+ },
+ {
+  "id": "a2-milk",
+  "name": "A2 Desi Gir Cow Milk",
+  "cat": "milk",
+  "type": "Cow",
+  "tag": "Premium",
+  "art": "bottle",
+  "accent": "#0b8457",
+  "label": "A2",
+  "bg": "#e6f6ee",
+  "rating": 4.7,
+  "reviews": 986,
+  "subscribable": true,
+  "variants": [
+   {
+    "size": "500 ml",
+    "price": 50,
+    "mrp": 55
+   },
+   {
+    "size": "1 L",
+    "price": 95,
+    "mrp": 110
+   }
+  ],
+  "highlights": [
+   "From indigenous Gir cows",
+   "Naturally rich in A2 beta-casein protein",
+   "Easy to digest",
+   "Glass bottle delivery"
+  ],
+  "desc": "A2 milk from our free-grazing desi Gir cows. Naturally sweet, easy on the stomach and loved by families who want the traditional taste of village milk.",
+  "img": "images/a2-milk.jpg",
+  "inStock": true
+ },
+ {
+  "id": "buffalo-milk",
+  "name": "Fresh Buffalo Milk",
+  "cat": "milk",
+  "type": "Buffalo",
+  "tag": "High Fat",
+  "art": "bottle",
+  "accent": "#6a3fb5",
+  "label": "BUFFALO",
+  "bg": "#f1ebfb",
+  "rating": 4.6,
+  "reviews": 1672,
+  "subscribable": true,
+  "variants": [
+   {
+    "size": "500 ml",
+    "price": 38,
+    "mrp": 42
+   },
+   {
+    "size": "1 L",
+    "price": 72,
+    "mrp": 80
+   }
+  ],
+  "highlights": [
+   "Thick and creamy, fat 6% minimum",
+   "Best for curd, paneer and sweets",
+   "No preservatives",
+   "Chilled within minutes of milking"
+  ],
+  "desc": "Rich, creamy buffalo milk with a thick malai layer. Ideal for making dahi, paneer, kheer and the perfect cup of chai.",
+  "img": "images/buffalo-milk.jpg",
+  "inStock": true
+ },
+ {
+  "id": "toned-milk",
+  "name": "Toned Cow Milk (Low Fat)",
+  "cat": "milk",
+  "type": "Cow",
+  "art": "bottle",
+  "accent": "#00a3c4",
+  "label": "TONED",
+  "bg": "#e3f7fb",
+  "rating": 4.3,
+  "reviews": 642,
+  "subscribable": true,
+  "variants": [
+   {
+    "size": "500 ml",
+    "price": 28,
+    "mrp": 30
+   },
+   {
+    "size": "1 L",
+    "price": 54,
+    "mrp": 58
+   }
+  ],
+  "highlights": [
+   "Fat 3% — lighter, everyday milk",
+   "Same farm freshness",
+   "Great for fitness-conscious families"
+  ],
+  "desc": "Our fresh cow milk with some of the cream removed. Light, nutritious and perfect for daily drinking.",
+  "img": "images/toned-milk.jpg",
+  "inStock": true,
+  "tag": ""
+ },
+ {
+  "id": "paneer",
+  "name": "Fresh Cow Milk Paneer",
+  "cat": "paneer",
+  "type": "Cow",
+  "tag": "Protein Rich",
+  "art": "paneer",
+  "accent": "#2874f0",
+  "bg": "#fff6e5",
+  "rating": 4.6,
+  "reviews": 1820,
+  "variants": [
+   {
+    "size": "200 g",
+    "price": 90,
+    "mrp": 100
+   },
+   {
+    "size": "500 g",
+    "price": 210,
+    "mrp": 240
+   },
+   {
+    "size": "1 kg",
+    "price": 400,
+    "mrp": 460
+   }
+  ],
+  "highlights": [
+   "Made fresh every morning",
+   "Soft and spongy texture",
+   "High in protein",
+   "No starch or additives"
+  ],
+  "desc": "Soft, fresh paneer made from our pure cow milk. Melts in the mouth — perfect for paneer tikka, palak paneer and bhurji.",
+  "img": "images/paneer.jpg",
+  "inStock": true,
+  "subscribable": false
+ },
+ {
+  "id": "malai-paneer",
+  "name": "Malai Paneer (Buffalo)",
+  "cat": "paneer",
+  "type": "Buffalo",
+  "art": "paneer",
+  "accent": "#ff8a00",
+  "bg": "#fff1df",
+  "rating": 4.7,
+  "reviews": 1204,
+  "variants": [
+   {
+    "size": "200 g",
+    "price": 105,
+    "mrp": 120
+   },
+   {
+    "size": "500 g",
+    "price": 250,
+    "mrp": 290
+   }
+  ],
+  "highlights": [
+   "Extra creamy, made from buffalo milk",
+   "Rich malai taste",
+   "Holds shape when cooked",
+   "Made fresh daily"
+  ],
+  "desc": "Rich and creamy malai paneer made from full-fat buffalo milk. The choice for restaurant-style shahi paneer and butter masala.",
+  "img": "images/paneer.jpg",
+  "inStock": true,
+  "subscribable": false,
+  "tag": ""
+ },
+ {
+  "id": "cow-curd",
+  "name": "Set Cow Curd (Dahi)",
+  "cat": "curd",
+  "type": "Cow",
+  "art": "curd",
+  "accent": "#2874f0",
+  "label": "DAHI",
+  "bg": "#eef4ff",
+  "rating": 4.5,
+  "reviews": 1530,
+  "subscribable": true,
+  "variants": [
+   {
+    "size": "400 g",
+    "price": 45,
+    "mrp": 50
+   },
+   {
+    "size": "1 kg",
+    "price": 100,
+    "mrp": 115
+   }
+  ],
+  "highlights": [
+   "Naturally set, thick texture",
+   "Rich in probiotics",
+   "Mildly sweet, not sour",
+   "Earthen-pot style setting"
+  ],
+  "desc": "Traditional set dahi made from fresh cow milk. Thick, smooth and perfect with every meal, raita or lassi.",
+  "img": "images/cow-curd.jpg",
+  "inStock": true,
+  "tag": "Fresh"
+ },
+ {
+  "id": "buffalo-curd",
+  "name": "Thick Buffalo Curd",
+  "cat": "curd",
+  "type": "Buffalo",
+  "art": "curd",
+  "accent": "#6a3fb5",
+  "label": "DAHI",
+  "bg": "#f1ebfb",
+  "rating": 4.6,
+  "reviews": 870,
+  "subscribable": true,
+  "variants": [
+   {
+    "size": "400 g",
+    "price": 55,
+    "mrp": 60
+   },
+   {
+    "size": "1 kg",
+    "price": 120,
+    "mrp": 135
+   }
+  ],
+  "highlights": [
+   "Extra thick, spoon-standing curd",
+   "Made from full-cream buffalo milk",
+   "Rich in probiotics"
+  ],
+  "desc": "Creamy, thick dahi made from buffalo milk. A favourite for shrikhand, dahi vada and a cooling bowl after lunch.",
+  "img": "images/buffalo-curd.jpg",
+  "inStock": true,
+  "tag": ""
+ },
+ {
+  "id": "hung-curd",
+  "name": "Hung Curd (Greek Style)",
+  "cat": "curd",
+  "type": "Cow",
+  "tag": "New",
+  "art": "curd",
+  "accent": "#0b8457",
+  "label": "HUNG",
+  "bg": "#e6f6ee",
+  "rating": 4.4,
+  "reviews": 312,
+  "variants": [
+   {
+    "size": "200 g",
+    "price": 70,
+    "mrp": 80
+   }
+  ],
+  "highlights": [
+   "Strained for a dense, creamy texture",
+   "High protein",
+   "Great for dips and marinades"
+  ],
+  "desc": "Strained cow milk curd with a rich, dense texture. Use it for dips, tikka marinades, or eat it with honey and fruit.",
+  "img": "images/hung-curd.jpg",
+  "inStock": true,
+  "subscribable": false
+ },
+ {
+  "id": "cow-ghee",
+  "name": "Desi Cow Ghee (Bilona)",
+  "cat": "ghee",
+  "type": "Cow",
+  "tag": "Premium",
+  "art": "ghee",
+  "accent": "#b5651d",
+  "label": "GHEE",
+  "bg": "#fff6e0",
+  "rating": 4.8,
+  "reviews": 2210,
+  "variants": [
+   {
+    "size": "250 ml",
+    "price": 320,
+    "mrp": 360
+   },
+   {
+    "size": "500 ml",
+    "price": 620,
+    "mrp": 700
+   },
+   {
+    "size": "1 L",
+    "price": 1200,
+    "mrp": 1400
+   }
+  ],
+  "highlights": [
+   "Traditional hand-churned bilona method",
+   "Made from curd, not cream",
+   "Granular texture and rich aroma",
+   "Glass jar packing"
+  ],
+  "desc": "Golden, aromatic ghee made the traditional bilona way — milk is set into curd, hand-churned into makhan and slow-cooked on a low flame.",
+  "img": "images/cow-ghee.jpg",
+  "inStock": true,
+  "subscribable": false
+ },
+ {
+  "id": "buffalo-ghee",
+  "name": "Buffalo Ghee",
+  "cat": "ghee",
+  "type": "Buffalo",
+  "art": "ghee",
+  "accent": "#6a3fb5",
+  "label": "GHEE",
+  "bg": "#f6efff",
+  "rating": 4.5,
+  "reviews": 640,
+  "variants": [
+   {
+    "size": "500 ml",
+    "price": 480,
+    "mrp": 540
+   },
+   {
+    "size": "1 L",
+    "price": 920,
+    "mrp": 1050
+   }
+  ],
+  "highlights": [
+   "Rich, creamy and white-golden",
+   "Ideal for sweets and parathas",
+   "Slow-cooked in small batches"
+  ],
+  "desc": "Pure buffalo ghee with a rich, full flavour. A kitchen essential for halwa, laddoo and crispy parathas.",
+  "img": "images/buffalo-ghee.jpg",
+  "inStock": true,
+  "subscribable": false,
+  "tag": ""
+ },
+ {
+  "id": "white-butter",
+  "name": "Makhan (White Butter)",
+  "cat": "ghee",
+  "type": "Cow",
+  "art": "butter",
+  "bg": "#fffbe8",
+  "rating": 4.6,
+  "reviews": 455,
+  "variants": [
+   {
+    "size": "200 g",
+    "price": 120,
+    "mrp": 135
+   },
+   {
+    "size": "500 g",
+    "price": 280,
+    "mrp": 320
+   }
+  ],
+  "highlights": [
+   "Hand-churned from fresh curd",
+   "Unsalted, no colour added",
+   "Just like village makhan"
+  ],
+  "desc": "Soft, unsalted white butter churned from fresh dahi. Have it with makki ki roti, parathas or straight off the spoon.",
+  "img": "images/white-butter.jpg",
+  "inStock": true,
+  "subscribable": false,
+  "tag": ""
+ },
+ {
+  "id": "sweet-lassi",
+  "name": "Sweet Lassi",
+  "cat": "drinks",
+  "type": "Cow",
+  "art": "glass",
+  "accent": "#ff8a00",
+  "fill": "#fff1d0",
+  "bg": "#fff8ec",
+  "rating": 4.5,
+  "reviews": 980,
+  "variants": [
+   {
+    "size": "200 ml",
+    "price": 25,
+    "mrp": 30
+   },
+   {
+    "size": "500 ml",
+    "price": 55,
+    "mrp": 60
+   }
+  ],
+  "highlights": [
+   "Thick, creamy and lightly sweet",
+   "Made from fresh dahi",
+   "Served chilled"
+  ],
+  "desc": "Our classic Punjabi-style sweet lassi, churned from fresh dahi. A perfect summer cooler.",
+  "img": "images/sweet-lassi.jpg",
+  "inStock": true,
+  "subscribable": false,
+  "tag": ""
+ },
+ {
+  "id": "chaas",
+  "name": "Masala Chaas",
+  "cat": "drinks",
+  "type": "Cow",
+  "art": "glass",
+  "accent": "#0b8457",
+  "fill": "#eaf6df",
+  "mint": true,
+  "bg": "#eef8ea",
+  "rating": 4.4,
+  "reviews": 760,
+  "variants": [
+   {
+    "size": "200 ml",
+    "price": 15,
+    "mrp": 18
+   },
+   {
+    "size": "500 ml",
+    "price": 35,
+    "mrp": 40
+   }
+  ],
+  "highlights": [
+   "Spiced with roasted jeera and mint",
+   "Aids digestion",
+   "Light and refreshing"
+  ],
+  "desc": "Refreshing spiced buttermilk with roasted cumin, mint and a pinch of rock salt. The perfect drink after a heavy meal.",
+  "img": "images/chaas.jpg",
+  "inStock": true,
+  "subscribable": false,
+  "tag": ""
+ }
+]

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Team sign in — Gaudhara</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A5%9B%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <!-- Sign in / forgot password / reset password -->
+  <div class="login-page" id="authView" hidden>
+    <main class="login-wrap">
+      <a class="brand" href="/" aria-label="Gaudhara store">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span class="brand-text">Gaudhara<span>Farm Fresh</span></span>
+      </a>
+      <div id="authCard"></div>
+      <p class="login-back"><a href="/">← Back to website</a></p>
+    </main>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="appView" hidden>
+    <header class="bar">
+      <a class="brand" href="#dashboard"><span class="brand-logo sm" aria-hidden="true"></span> Gaudhara admin</a>
+      <nav id="nav" aria-label="Admin sections"></nav>
+      <div class="bar-right">
+        <a class="view-site" href="/" target="_blank" rel="noopener">View store ↗</a>
+        <span class="who" id="who"></span>
+        <button class="btn btn-ghost" id="signOut" type="button">Sign out</button>
+      </div>
+    </header>
+    <main class="a-main">
+      <div class="toolbar">
+        <div><h1 id="pageTitle">Dashboard</h1><p class="live" id="syncInfo">Live</p></div>
+        <div class="toolbar-actions" id="toolActions"></div>
+      </div>
+      <div id="view"></div>
+    </main>
+  </div>
+
+  <dialog id="productDialog" class="p-dialog" aria-labelledby="pdTitle"></dialog>
+  <input type="file" id="quickPhoto" accept="image/jpeg,image/png,image/webp" hidden>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/shared.js"></script>
+  <script src="js/art.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
