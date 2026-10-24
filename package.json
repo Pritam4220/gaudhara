@@ -5,6 +5,8 @@
   "description": "Gaudhara dairy e-commerce store with customer accounts and an admin dashboard",
   "scripts": {
     "start": "node server/server.js",
+    "dev": "node server/server.js",
+    "tunnel": "ssh -o StrictHostKeyChecking=no -R 80:localhost:3000 serveo.net",
     "reset-admin": "node server/reset-admin.js",
     "showcase": "node server/build-showcase.js"
   },
