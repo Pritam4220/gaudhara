@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: gaudhara-store
+    runtime: node
+    plan: free
+    buildCommand: ""
+    startCommand: node server/server.js
+    envVars:
+      - key: TRUST_PROXY
+        value: "1"
+      - key: ADMIN_EMAIL
+        value: anointinginfotech@gmail.com
